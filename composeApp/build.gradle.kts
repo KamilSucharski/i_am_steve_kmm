@@ -115,8 +115,14 @@ dependencies {
     add("kspIosX64", libs.ktorfit.ksp)
 }
 
-// Hack from https://github.com/Foso/Ktorfit/issues/512 to fix https://github.com/google/ksp/issues/929
+
 project.afterEvaluate {
+    // Ensure multiplatform resources are built
+    tasks.named("build") {
+        dependsOn("generateComposeResClass")
+    }
+
+    // Hack from https://github.com/Foso/Ktorfit/issues/512 to fix https://github.com/google/ksp/issues/929
     tasks.named("kspKotlinIosArm64") {
         dependsOn("generateMRiosArm64Main")
     }
