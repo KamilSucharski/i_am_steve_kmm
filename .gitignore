@@ -1,0 +1,15 @@
+*.iml
+.cxx
+.DS_Store
+.externalNativeBuild
+.gradle
+.idea
+build
+captures
+local.properties
+
+presentation/keystore.properties
+presentation/release_keystore.jks
+presentation/neocitiesWithoutPreload
+presentation/neocitiesWithPreload
+signing
