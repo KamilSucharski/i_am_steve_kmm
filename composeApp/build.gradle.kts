@@ -55,6 +55,8 @@ kotlin {
             implementation(libs.voyager.screenmodel)
         }
     }
+
+    task("testClasses") // https://stackoverflow.com/questions/78133592/kmm-project-build-error-testclasses-not-found-in-project-shared
 }
 
 android {
@@ -120,16 +122,5 @@ project.afterEvaluate {
     // Ensure multiplatform resources are built
     tasks.named("build") {
         dependsOn("generateComposeResClass")
-    }
-
-    // Hack from https://github.com/Foso/Ktorfit/issues/512 to fix https://github.com/google/ksp/issues/929
-    tasks.named("kspKotlinIosArm64") {
-        dependsOn("generateMRiosArm64Main")
-    }
-    tasks.named("kspKotlinIosSimulatorArm64") {
-        dependsOn("generateMRiosSimulatorArm64Main")
-    }
-    tasks.named("kspKotlinIosX64") {
-        dependsOn("generateMRiosX64Main")
     }
 }
